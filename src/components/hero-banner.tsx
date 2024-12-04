@@ -4,7 +4,7 @@ function HeroBanner() {
             <div className="max-w-screen-md">
                 <h1 className="relative text-5xl font-bold">
                     Clean your Twitter timeline from all slurs,
-                    <span className="text-error"> curse words</span> and hateful people
+                    <span className="text-blue-500"> curse words</span> and hateful people
                 </h1>
                 <p className="py-6">
                     Here you can start by browsing if you are a considered an hateful people on Twitter.
@@ -13,8 +13,8 @@ function HeroBanner() {
                     <input
                         type="text"
                         placeholder="Type an user @ to see if they are hateful or not"
-                        className="input input-bordered input-primary w-full max-w-full"/>
-                    <button className="btn btn-primary text-white font-semibold">Rechercher</button>
+                        className="input input-bordered border-blue-500 w-full max-w-full"/>
+                    <button className="bg-blue-500 py-3 px-5 rounded-lg text-white font-semibold">Rechercher</button>
                 </div>
             </div>
         </div>

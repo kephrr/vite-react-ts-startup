@@ -38,7 +38,7 @@ function NavBar() {
                 <a>Creator</a>
             </li>
             <li>
-                <span className="bg-primary">
+                <span className="bg-blue-500">
                     <a className="text-white font-semibold">
                         Sign Up
                     </a>

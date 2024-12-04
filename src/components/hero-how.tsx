@@ -14,13 +14,13 @@ function HeroHow({reverse, title, button, content, src}: HeroType) {
             className={reverse ? "mx-44 hero-content flex-col lg:flex-row-reverse" : "mx-44 hero-content flex-col lg:flex-row"}>
             <img
                 src={src}
-                className=" rounded-lg shadow-2xl"/>
+                className=" rounded-lg shadow-2xl" alt=""/>
             <div className="max-w-full">
                 <h1 className="text-5xl font-bold">{title}</h1>
                 <p className="py-6">
                     {content}
                 </p>
-                <button className="btn btn-primary">{button}</button>
+                <button className="bg-blue-500 py-2 px-5 rounded-lg text-white">{button}</button>
             </div>
         </div>
     </div>

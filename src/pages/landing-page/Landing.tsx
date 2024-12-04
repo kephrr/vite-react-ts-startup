@@ -3,6 +3,8 @@ import HeroBanner from "../../components/hero-banner.tsx";
 import HeroHow, {HeroType} from "../../components/hero-how.tsx";
 import UserTable from "../../components/user-table.tsx";
 import {User} from "../../models/user.tsx";
+import Footer from "../../components/footer.tsx";
+import FeedBack from "../../components/feedback.tsx";
 
 function Landing() {
     const heros:Array<HeroType> = [
@@ -43,17 +45,22 @@ function Landing() {
     ]
 
     return (
-        <div className="relative">
+        <div className="relative bg-base-200">
             <Navbar/>
             <HeroBanner></HeroBanner>
             {heros.map(h => <HeroHow
                 reverse={h.reverse} button={h.button}
                 title={h.title} content={h.content} src={h.src}></HeroHow>
             )}
-            <div className="flex justify-center bg-base-200">
-                <h1 className="text-5xl font-bold">Top <span className="text-error">0.1%</span> toxic users</h1>
+            <div className="flex justify-center">
+                <h1 className="text-5xl font-bold">Top
+                    <span className="text-blue-500"> 0.1% </span>
+                    <span className="text-red-600"> most toxic </span>
+                    users</h1>
             </div>
             <UserTable users={users}></UserTable>
+            <FeedBack/>
+            <Footer></Footer>
         </div>
     );
 }
