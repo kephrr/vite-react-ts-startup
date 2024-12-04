@@ -1,8 +1,8 @@
 import {LINKS} from '../App.tsx'
 
 function NavBar() {
-    return <div className='relative navbar bg-base-200 justify-center'>
-        <ul className="menu fixed bg-base-100 lg:menu-horizontal rounded-box">
+    return <div className='z-10 fixed navbar bg-base-200 justify-center'>
+        <ul className="menu bg-base-100 menu-horizontal lg:max-w-screen-md sm:max-w-md rounded-box">
             <li>
                 <a>Home</a>
             </li>

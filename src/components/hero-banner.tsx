@@ -4,7 +4,7 @@ function HeroBanner() {
             <div className="max-w-screen-md">
                 <h1 className="relative text-5xl font-bold">
                     Clean your Twitter timeline from all slurs,
-                    <span className="text-primary"> curse words</span> and hateful people
+                    <span className="text-error"> curse words</span> and hateful people
                 </h1>
                 <p className="py-6">
                     Here you can start by browsing if you are a considered an hateful people on Twitter.
