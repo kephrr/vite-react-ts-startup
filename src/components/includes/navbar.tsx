@@ -1,12 +1,15 @@
-import {LINKS} from '../App.tsx'
-
-
 function NavBar() {
+    const LINKS = {
+        twitter: '',
+        github: '',
+        linkedin: ''
+    }
     const changelog = "Latest change, updates and enhancements added to the website"
+
     return <div className='z-10 fixed navbar bg-transparent justify-center'>
         <ul className="menu bg-base-100 menu-horizontal lg:max-w-screen-md sm:max-w-sm rounded-box">
             <li>
-                <a>Home</a>
+                <a href="/">Home</a>
             </li>
             <div className="tooltip tooltip-bottom" data-tip={changelog}>
                 <li>
@@ -39,7 +42,7 @@ function NavBar() {
                 </details>
             </li>
             <li>
-                <a>Creator</a>
+            <a>Creator</a>
             </li>
             <li>
                 <span className="bg-blue-500">

@@ -1,10 +1,10 @@
-import Navbar from "../components/navbar.tsx";
-import HeroBanner from "../components/hero-banner.tsx";
-import HeroHow, {HeroType} from "../components/hero-how.tsx";
-import UserTable from "../components/user-table.tsx";
+import Navbar from "../components/includes/navbar.tsx";
+import HeroBanner from "../components/includes/hero-banner.tsx";
+import HeroHow, {HeroType} from "../components/includes/hero-how.tsx";
+import UserTable from "../components/utils/user-table.tsx";
 import {User} from "../models/user.tsx";
-import Footer from "../components/footer.tsx";
-import FeedBack from "../components/feedback.tsx";
+import Footer from "../components/includes/footer.tsx";
+import FeedBack from "../components/utils/feedback.tsx";
 
 function Landing() {
     const heros:Array<HeroType> = [

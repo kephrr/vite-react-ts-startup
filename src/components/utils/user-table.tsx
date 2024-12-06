@@ -1,6 +1,6 @@
-import {User} from "../models/user.tsx";
+import {User} from "../../models/user.tsx";
 import { useState} from "react";
-import {Toxicity} from "../models/label.tsx";
+import {Toxicity} from "../../models/label.tsx";
 
 
 export default function UserTable ({ users }: { users: Array<User> }) {
@@ -28,7 +28,6 @@ export default function UserTable ({ users }: { users: Array<User> }) {
             case 5:
                 return <div className="badge badge-outline badge-error">{text}</div>
         }
-
     }
 
     return <div className="flex justify-center w-full py-20 bg-base-200">

@@ -1,4 +1,4 @@
-import Button from "./button.tsx";
+import Button from "../utils/button.tsx";
 
 export type HeroType = {
     reverse: boolean,
