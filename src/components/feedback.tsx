@@ -1,3 +1,5 @@
+import Button from "./button.tsx";
+
 function FeedBack(){
     return (
         <div className="flex flex-col mx-44 items-start bg-base-200">
@@ -14,6 +16,7 @@ function FeedBack(){
                 <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"/>
                 <input type="radio" name="rating-4" className="mask mask-star-2 bg-yellow-500"/>
             </div>
+            <Button text="Send feedback"/>
         </div>
     )
 }

@@ -32,7 +32,7 @@ function Footer(){
                             type="text"
                             placeholder="username@site.com"
                             className="input input-bordered join-item"/>
-                        <button className="bg-blue-500 py-2 px-5 text-white join-item">Subscribe</button>
+                        <button className="bg-blue-500 py-2 px-5 text-white join-item font-semibold">Subscribe</button>
                     </div>
                 </fieldset>
             </form>

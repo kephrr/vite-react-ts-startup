@@ -1,5 +1,6 @@
 import {User} from "../models/user.tsx";
-import {useState} from "react";
+import { useState} from "react";
+import {Toxicity} from "../models/label.tsx";
 
 
 export default function UserTable ({ users }: { users: Array<User> }) {
@@ -14,12 +15,28 @@ export default function UserTable ({ users }: { users: Array<User> }) {
         setHoverId(0)
     }
 
+    function getLabel(id: number, text: string | undefined){
+        switch (id) {
+            case 1:
+                return <div className="badge badge-outline badge-primary">{text}</div>
+            case 2:
+                return <div className="badge badge-outline badge-info">{text}</div>
+            case 3:
+                return <div className="badge badge-outline badge-success">{text}</div>
+            case 4:
+                return <div className="badge badge-outline badge-warning">{text}</div>
+            case 5:
+                return <div className="badge badge-outline badge-error">{text}</div>
+        }
+
+    }
+
     return <div className="flex justify-center w-full py-20 bg-base-200">
-        <table className="bg-base-100 table max-w-screen-md shadow-primary">
+        <table className="bg-base-100 table max-w-screen-md shadow-2xl">
             {/* head */}
             <thead>
             <tr className="text-white">
-                <th>Top</th>
+            <th>Top</th>
                 <th>Profile Name</th>
                 <th>Username</th>
                 <th>Toxicity Level</th>
@@ -34,7 +51,7 @@ export default function UserTable ({ users }: { users: Array<User> }) {
                     <th>{user.id}</th>
                     <td>{user.name}</td>
                     <td>@{user.pseudo}</td>
-                    <td>{user.label}</td>
+                    <td>{getLabel(user.label, Toxicity.get(user.label))}</td>
                 </tr>
             ))}
             </tbody>

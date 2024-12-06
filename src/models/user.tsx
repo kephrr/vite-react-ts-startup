@@ -2,7 +2,7 @@ export type User = {
     id: number,
     name: string,
     pseudo: string,
-    label:string
+    label: number
 }
 
 export type UserDetails = {
@@ -10,5 +10,7 @@ export type UserDetails = {
     name: string,
     pseudo: string,
     score: number,
-    label: string
+    label: number,
+    slurs: number,
+    tweets: string[]
 }

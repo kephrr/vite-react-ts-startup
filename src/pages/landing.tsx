@@ -1,10 +1,10 @@
-import Navbar from "../../components/navbar.tsx";
-import HeroBanner from "../../components/hero-banner.tsx";
-import HeroHow, {HeroType} from "../../components/hero-how.tsx";
-import UserTable from "../../components/user-table.tsx";
-import {User} from "../../models/user.tsx";
-import Footer from "../../components/footer.tsx";
-import FeedBack from "../../components/feedback.tsx";
+import Navbar from "../components/navbar.tsx";
+import HeroBanner from "../components/hero-banner.tsx";
+import HeroHow, {HeroType} from "../components/hero-how.tsx";
+import UserTable from "../components/user-table.tsx";
+import {User} from "../models/user.tsx";
+import Footer from "../components/footer.tsx";
+import FeedBack from "../components/feedback.tsx";
 
 function Landing() {
     const heros:Array<HeroType> = [
@@ -22,25 +22,31 @@ function Landing() {
             id: 1,
             name: 'LAND OF WANO',
             pseudo: 'Wano_Kuni',
-            label:'High Toxicity'
+            label: 5
         },
         {
             id: 2,
             name: 'Kreatiive_',
             pseudo: 'kephrr',
-            label:'Low Toxicity'
+            label: 4
         },
         {
             id: 3,
             name: 'RYO Sensei',
             pseudo: 'RyoSenseiTV',
-            label:'Mid Toxicity'
+            label: 3
         },
         {
             id: 4,
             name: 'GOJI',
             pseudo: 'GojiYouTube',
-            label:'Low Toxicity'
+            label:2
+        },
+        {
+            id: 5,
+            name: 'TTFL',
+            pseudo: 'TrashTalk_fr',
+            label:1
         }
     ]
 

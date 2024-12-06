@@ -14,7 +14,10 @@ function HeroBanner() {
                         type="text"
                         placeholder="Type an user @ to see if they are hateful or not"
                         className="input input-bordered border-blue-500 w-full max-w-full"/>
-                    <button className="bg-blue-500 py-3 px-5 rounded-lg text-white font-semibold">Rechercher</button>
+                    <a href="/toxics">
+                        <button className="bg-blue-500 py-3 px-6 rounded-lg text-white font-semibold">Browse
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
