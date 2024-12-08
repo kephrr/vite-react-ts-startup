@@ -1,8 +1,8 @@
 import {ArrowLeft, House} from "lucide-react";
-import {BASE_LINK} from "../../resources.ts";
+import {BASE_URL} from "../resources.ts";
 
 function NotFound(){
-    const home_link = BASE_LINK + "/"
+    const home_link = BASE_URL + "/"
 
     function onClick(){
         history.back()

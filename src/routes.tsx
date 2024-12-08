@@ -3,7 +3,7 @@ import { lazy } from "react";
 import {RouteObject} from "react-router-dom";
 import Landing from "./pages/landing.tsx";
 import Signup from "./pages/signup.tsx";
-import NotFound from "./components/includes/not-found.tsx";
+import NotFound from "./pages/not-found.tsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const ExploreLayout = lazy(() => import("./layouts/explore-layout"));

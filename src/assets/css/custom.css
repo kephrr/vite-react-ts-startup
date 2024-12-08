@@ -1,0 +1,40 @@
+.primary-label{
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid #70db79;
+    background-color: rgba(126, 219, 112, 0.29);
+    color: #70db79;
+}
+.blue-label{
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid #58aeef;
+    background-color: rgba(112, 182, 219, 0.29);
+    color: #58aeef;
+}
+.yellow-label{
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid #efec58;
+    background-color: rgba(219, 214, 112, 0.29);
+    color: #bdbb3b;
+}
+.orange-label{
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid #efb358;
+    background-color: rgba(239, 185, 88, 0.29);
+    color: #efb358;
+}
+.red-label{
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid #ef5858;
+    background-color: rgba(219, 112, 112, 0.29);
+    color: #ef5858;
+}

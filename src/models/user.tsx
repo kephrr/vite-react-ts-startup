@@ -15,5 +15,16 @@ export type UserDetails = {
     label: number,
     slurs: number,
     ntweets:number,
-    tweets: string[]
+    tweets: string[];
+}
+
+export type UserModal = {
+    name: string,
+    pseudo: string,
+    followers:number,
+    followed:number,
+    score: number,
+    label: number,
+    slurs: number,
+    ntweets:number,
 }

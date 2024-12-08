@@ -2,7 +2,7 @@ function Naviguation({location}: { location: {text:string, url:string}[] }) {
     return <div className="breadcrumbs text-sm">
         <ul>
             {location.map((page) => (
-            <li>
+            <li key={page.url}>
                 <a className="flex gap-1" href={page.url}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

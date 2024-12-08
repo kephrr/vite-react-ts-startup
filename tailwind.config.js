@@ -3,9 +3,9 @@ import daisyui from "daisyui"
 
 export default {
   content: [
-      "./src/components/*.{tsx}",
-    "./src/pages/**/*.{html,tsx}",
-    "./src/**/*.{html,tsx}"
+      "./src/components/*.tsx" ,
+    "./src/pages/**/*.tsx",
+    "./src/**/*.tsx"
   ],
   theme: {
     extend: {},

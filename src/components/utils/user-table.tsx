@@ -1,6 +1,6 @@
 import {User} from "../../models/user.tsx";
 import { useState} from "react";
-import {Toxicity} from "../../models/label.tsx";
+import {TOXICITY} from "../../resources.ts";
 
 
 export default function UserTable ({ users }: { users: Array<User> }) {
@@ -35,7 +35,7 @@ export default function UserTable ({ users }: { users: Array<User> }) {
             {/* head */}
             <thead>
             <tr className="text-white">
-            <th>Top</th>
+                <th>Top</th>
                 <th>Profile Name</th>
                 <th>Username</th>
                 <th>Toxicity Level</th>
@@ -50,7 +50,7 @@ export default function UserTable ({ users }: { users: Array<User> }) {
                     <th>{user.id}</th>
                     <td>{user.name}</td>
                     <td>@{user.pseudo}</td>
-                    <td>{getLabel(user.label, Toxicity.get(user.label))}</td>
+                    <td>{getLabel(user.label, TOXICITY.get(user.label))}</td>
                 </tr>
             ))}
             </tbody>
