@@ -46,7 +46,7 @@ function NavBar() {
             </li>
             <li>
                 <span className="bg-blue-500">
-                    <a className="text-white font-semibold">
+                    <a className="text-white font-semibold" href="/signup">
                         Sign Up
                     </a>
                 </span>
