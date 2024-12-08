@@ -9,6 +9,7 @@ import FeedBack from "../components/utils/feedback.tsx";
 function Landing() {
     const heros:Array<HeroType> = [
         {
+            id:1,
             reverse:true,
             title:'How does it works ?',
             content:'Every Time  user uses a slur, an insult etc... his hatful ranking upscales in our database. We repertory every hateful users so you can decide to block or mask them all in one click.',
@@ -55,6 +56,8 @@ function Landing() {
             <Navbar/>
             <HeroBanner></HeroBanner>
             {heros.map(h => <HeroHow
+                key={h.id}
+                id={h.id}
                 reverse={h.reverse} button={h.button}
                 title={h.title} content={h.content} src={h.src}></HeroHow>
             )}

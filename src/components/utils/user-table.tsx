@@ -1,6 +1,7 @@
 import {User} from "../../models/user.tsx";
 import { useState} from "react";
 import {TOXICITY} from "../../resources.ts";
+import Label from "./label.tsx";
 
 
 export default function UserTable ({ users }: { users: Array<User> }) {
@@ -13,21 +14,6 @@ export default function UserTable ({ users }: { users: Array<User> }) {
 
     function MouseLeave (){
         setHoverId(0)
-    }
-
-    function getLabel(id: number, text: string | undefined){
-        switch (id) {
-            case 1:
-                return <div className="badge badge-outline badge-primary">{text}</div>
-            case 2:
-                return <div className="badge badge-outline badge-info">{text}</div>
-            case 3:
-                return <div className="badge badge-outline badge-success">{text}</div>
-            case 4:
-                return <div className="badge badge-outline badge-warning">{text}</div>
-            case 5:
-                return <div className="badge badge-outline badge-error">{text}</div>
-        }
     }
 
     return <div className="flex justify-center w-full py-20 bg-base-200">
@@ -47,10 +33,12 @@ export default function UserTable ({ users }: { users: Array<User> }) {
                     onMouseLeave={MouseLeave}
                     className={hoverId === user.id ? "cursor-pointer py-5 px-5 bg-base-200" : "cursor-pointer py-5 px-5"}
                     key={user.id} id={user.id.toString()}>
-                    <th>{user.id}</th>
+                    <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>@{user.pseudo}</td>
-                    <td>{getLabel(user.label, TOXICITY.get(user.label))}</td>
+                    <td>
+                        <Label id={user.label} text={TOXICITY.get(user.label)}></Label>
+                    </td>
                 </tr>
             ))}
             </tbody>

@@ -1,6 +1,7 @@
 import Button from "../utils/button.tsx";
 
 export type HeroType = {
+    id:number,
     reverse: boolean,
     title: string,
     content: string,
