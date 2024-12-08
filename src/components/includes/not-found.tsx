@@ -1,7 +1,6 @@
 import {ArrowLeft, House} from "lucide-react";
 import {BASE_LINK} from "../../resources.ts";
 
-
 function NotFound(){
     const home_link = BASE_LINK + "/"
 

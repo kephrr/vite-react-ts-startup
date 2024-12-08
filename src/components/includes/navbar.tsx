@@ -1,9 +1,6 @@
+import {LINKS} from "../../resources.ts";
+
 function NavBar() {
-    const LINKS = {
-        twitter: '',
-        github: '',
-        linkedin: ''
-    }
     const changelog = "Latest change, updates and enhancements added to the website"
 
     return <div className='z-10 fixed navbar bg-transparent justify-center'>
