@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import {UserModal} from "../../models/user.tsx";
 import Label from "./label.tsx";
 import {TOXICITY} from "../../resources.ts";
+import {Download} from "lucide-react";
 
 
 const DetailModal: React.FC<UserModal> = (user) => {
@@ -48,6 +49,9 @@ const DetailModal: React.FC<UserModal> = (user) => {
                             <p className={head}>Followed</p>
                             <p className={content}>{user.followed}</p>
                         </div>
+                        <a href="">
+                            <Download />
+                        </a>
                     </div>
                     <button className="btn btn-sm mt-5" onClick={closeModal}>Close</button>
                 </div>

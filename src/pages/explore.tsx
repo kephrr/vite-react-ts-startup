@@ -5,6 +5,7 @@ import {TOXICITY} from "../resources.ts";
 import Label from "../components/utils/label.tsx";
 import {FormEvent, useState} from "react";
 
+
 type Option = {
     id: number, text:string, value:number, select:number
 }
@@ -59,19 +60,21 @@ function Explore(){
     ]
 
     function filterInput(e:FormEvent<HTMLInputElement>){
-        setTextInput(e.currentTarget.value)
-        const keyword = textInput.toString()
-        if(keyword.length>=2){
-            const data:UserDetails[] = [];
-            users.forEach((u: UserDetails)=>{
-                if((u.name.toLowerCase().includes(keyword.toLowerCase())) ||
-                    u.pseudo.toLowerCase().includes(keyword.toLowerCase())) {
-                    data.push(u)
-                }
-            })
-            setUsers(data);
-        }else{
+        const keyword = e.currentTarget.value;
+        setTextInput(keyword);
+        if (keyword.trim() === "") {
             setUsers(default_data);
+        } else {
+            setUsers([])
+            setTimeout(()=>{
+                const filteredUsers = default_data.filter((u: UserDetails) =>
+                    u.name.toLowerCase().includes(keyword.toLowerCase()) ||
+                    u.pseudo.toLowerCase().includes(keyword.toLowerCase())
+                );
+                setUsers(filteredUsers);
+            },
+                1000)
+
         }
     }
 
