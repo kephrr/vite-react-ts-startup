@@ -3,43 +3,18 @@ import {UserDetails} from "../models/user.tsx";
 import UserTableDetail from "../components/utils/user-table-detail.tsx";
 import {TOXICITY} from "../resources.ts";
 import Label from "../components/utils/label.tsx";
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
+import {Loader} from "../components/utils/loader.tsx";
+import {ToxicityServiceImpl} from "../services/Impl/ToxicityServiceImpl.tsx";
+import {RestResponse} from "../models/RestResponse.ts";
 
 
 type Option = {
     id: number, text:string, value:number, select:number
 }
+const toxicityService = new ToxicityServiceImpl();
 
 function Explore(){
-    const [textInput, setTextInput] = useState("")
-    const [users, setUsers] = useState<UserDetails[]>([
-        {id: 1, name: 'ActuRyo', pseudo: 'RyoSesneiActuu', followers:19303, followed:192, score: 851,
-            label: 4, slurs: 124, ntweets:11982093, tweets:['']},
-        {id: 2, name: 'Byilhan TWITCH', pseudo: 'byliahn', followers:442, followed:10, score: 50,
-            label: 2, slurs: 12, ntweets:11903, tweets:['']},
-        {id: 3, name: 'ART', pseudo: 'arisky', followers:250, followed:100, score: 20,
-            label: 1, slurs: 20, ntweets:100002, tweets:['']},
-        {id: 4, name: 'Ryo Sensei', pseudo: 'RyoSesneiActuu', followers:19303, followed:192, score: 851,
-            label: 4, slurs: 124, ntweets:11982093, tweets:['']},
-        {id: 5, name: 'Houken D. Xebec', pseudo: 'mrlafayette', followers:442, followed:10, score: 50,
-            label: 5, slurs: 12, ntweets:11903, tweets:['']},
-        {id: 6, name: 'Hashirama_', pseudo: 'ashramass33', followers:250, followed:100, score: 20,
-            label: 1, slurs: 20, ntweets:100002, tweets:['']}
-    ]);
-    const default_data:UserDetails[] = [
-        {id: 1, name: 'ActuRyo', pseudo: 'RyoSesneiActuu', followers:19303, followed:192, score: 851,
-            label: 4, slurs: 124, ntweets:11982093, tweets:['']},
-        {id: 2, name: 'Byilhan TWITCH', pseudo: 'byliahn', followers:442, followed:10, score: 50,
-            label: 2, slurs: 12, ntweets:11903, tweets:['']},
-        {id: 3, name: 'ART', pseudo: 'arisky', followers:250, followed:100, score: 20,
-            label: 1, slurs: 20, ntweets:100002, tweets:['']},
-        {id: 4, name: 'Ryo Sensei', pseudo: 'RyoSesneiActuu', followers:19303, followed:192, score: 851,
-            label: 4, slurs: 124, ntweets:11982093, tweets:['']},
-        {id: 5, name: 'Houken D. Xebec', pseudo: 'mrlafayette', followers:442, followed:10, score: 50,
-            label: 2, slurs: 12, ntweets:11903, tweets:['']},
-        {id: 6, name: 'Hashirama_', pseudo: 'ashramass33', followers:250, followed:100, score: 20,
-            label: 1, slurs: 20, ntweets:100002, tweets:['']}
-    ]
     const location = [
         {text:'Home', url:'/'},
         {text:'Explore', url:'/explore'}
@@ -58,24 +33,32 @@ function Explore(){
         {id: 11, text:'Often', value:1, select:3},
         {id: 12, text:'Frequently', value:1, select:3}
     ]
+    const [textInput, setTextInput] = useState("")
+    const [currentPage, setCurrentPage] = useState<number | undefined>(0)
+    const [response, setResponse] = useState<RestResponse<UserDetails[]>>();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const findAllDetails = async (textInput:string) => {
+            try {
+                const data = await toxicityService.findAllDetailsPageWithFilter(textInput, currentPage);
+                setResponse(data)
+                setCurrentPage(data.currentPage)
+            } catch (err) {
+                setError((err as Error).message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        findAllDetails(textInput);
+    }, [textInput]);
+
+    if (error) return <p>Error: {error}</p>;
 
     function filterInput(e:FormEvent<HTMLInputElement>){
         const keyword = e.currentTarget.value;
         setTextInput(keyword);
-        if (keyword.trim() === "") {
-            setUsers(default_data);
-        } else {
-            setUsers([])
-            setTimeout(()=>{
-                const filteredUsers = default_data.filter((u: UserDetails) =>
-                    u.name.toLowerCase().includes(keyword.toLowerCase()) ||
-                    u.pseudo.toLowerCase().includes(keyword.toLowerCase())
-                );
-                setUsers(filteredUsers);
-            },
-                1000)
-
-        }
     }
 
     return (
@@ -111,18 +94,30 @@ function Explore(){
                 </a>
             </div>
             <div className="flex flex-row my-5 gap-2.5">
-                <UserTableDetail users={users}/>
-                <div className="overflow-x-auto flex flex-col flex-3 min-h-52 min-w-80 border border-base-100 rounded-lg p-2">
+                <div className="overflow-x-auto flex-1 border border-base-100 rounded-lg">
+                    {(loading)? <div className="flex-1 min-h-96 flex justify-center items-center"> <Loader></Loader> </div> :
+                        <UserTableDetail users={response?.results}/>
+                    }
+                    <div className="join">
+                        {response?.pages?.map((index)=> <button
+                                        key={index}
+                                        className={index+1===response?.currentPage ?"join-item btn btn-active": "join-item btn"}>
+                                {index}</button>
+                            )}
+                    </div>
+                </div>
+                <div
+                    className="overflow-x-auto flex flex-col flex-3 min-h-52 min-w-80 border border-base-100 rounded-lg p-2">
                     <h3 className="text-lg font-semibold my-2">Possible toxicity levels</h3>
                     <div className="flex gap-2.5 max-w-xs flex-wrap">
-                        {Array.from(TOXICITY.entries()).map(([key, value]) => (
-                            <Label key={key} id={key} text={value}></Label>
-                        ))}
+                            {Array.from(TOXICITY.entries()).map(([key, value]) => (
+                                <Label key={key} id={key} text={value}></Label>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+            )
+            }
 
-export default Explore;
+            export default Explore;

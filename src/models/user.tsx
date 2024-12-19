@@ -2,7 +2,7 @@ export type User = {
     id: number,
     name: string,
     pseudo: string,
-    label: number
+    level: number
 }
 
 export type UserDetails = {
@@ -10,12 +10,12 @@ export type UserDetails = {
     name: string,
     pseudo: string,
     followers:number,
-    followed:number,
+    following:number,
+    totalInsults: number,
+    totalTweets:number,
     score: number,
-    label: number,
-    slurs: number,
-    ntweets:number,
-    tweets: string[];
+    rate:number,
+    level: number,
 }
 
 export type UserModal = {
@@ -24,7 +24,7 @@ export type UserModal = {
     followers:number,
     followed:number,
     score: number,
-    label: number,
-    slurs: number,
-    ntweets:number,
+    level: number,
+    totalInsults: number,
+    totalTweets:number,
 }

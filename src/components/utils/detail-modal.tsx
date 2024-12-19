@@ -21,7 +21,7 @@ const DetailModal: React.FC<UserModal> = (user) => {
 
     const content:string = "text-lg"
 
-    const label = user.label;
+    const label = user.level;
     return (
         <div>
             <button className="btn bg-base-100 btn-sm" onClick={openModal}>
