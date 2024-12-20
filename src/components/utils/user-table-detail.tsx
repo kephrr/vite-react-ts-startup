@@ -25,7 +25,7 @@ function UserTableDetail({users}: { users: UserDetails[]|undefined }) {
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Followers</th>
+                    <th>Score</th>
                     <th>Toxicity</th>
                     <th></th>
                 </tr>
@@ -35,23 +35,25 @@ function UserTableDetail({users}: { users: UserDetails[]|undefined }) {
                     <tr
                         onMouseEnter={() => MouseEnter(user.id)}
                         onMouseLeave={MouseLeave}
-                        className={hoverId === user.id ? "cursor-pointer py-5 px-5 bg-base-200" : "cursor-pointer py-5 px-5"}
+                        className={hoverId === user.id ? "py-5 px-5 bg-base-200" : "py-5 px-5"}
                         key={user.id}>
                         <td>{user.id}</td>
                         <td>
                             <p className="font-semibold">{user.name}</p>
                             <p className="italic">@{user.pseudo}</p>
                         </td>
-                        <td>{user.followers}</td>
+                        <td>{user.score}</td>
                         <td>
-                            <Label id={user.level} text={TOXICITY.get(user.level)}/>
+                            <div className="cursor-pointer">
+                                <Label id={user.level} text={TOXICITY.get(user.level)}/>
+                            </div>
                         </td>
                         <td>
                             <DetailModal name={user.name}
                                          pseudo={user.pseudo}
                                          followers={user.followers}
-                                         followed={user.following}
-                                         score={user.totalInsults}
+                                         following={user.following}
+                                         rate={user.rate}
                                          level={user.level}
                                          totalInsults={user.totalInsults}
                                          totalTweets={user.totalTweets}></DetailModal>

@@ -18,10 +18,10 @@ const DetailModal: React.FC<UserModal> = (user) => {
     }
 
     const head:string = "font-semibold"
-
     const content:string = "text-lg"
-
     const label = user.level;
+    const rate:string = user.rate.toString().slice(0,5)
+
     return (
         <div>
             <button className="btn bg-base-100 btn-sm" onClick={openModal}>
@@ -29,29 +29,42 @@ const DetailModal: React.FC<UserModal> = (user) => {
             </button>
             <dialog id="my_modal_2" className="modal" ref={modalRef}>
                 <div className="modal-box">
-                    <div className="flex justify-between items-start">
-                        <div>
+                    <div className="flex justify-between items-start mb-1">
+                        <div className="">
                             <p className="font-bold text-lg">{user.name}</p>
-                            <p className="py-4 italic">@{user.pseudo}</p>
+                            <p className="italic text-sm text-white my-2 badge badge-info">@{user.pseudo}</p>
                         </div>
                         <Label id={label} text={TOXICITY.get(label)}></Label>
                     </div>
-                    <div className="flex gap-2.5">
-                        <div>
-                        <p className={head}>Score</p>
-                            <p className={content}>{user.score}</p>
+                    <div className="flex flex-col gap-2.5">
+                        <div className="flex gap-2.5">
+                            <div>
+                                <p className={head}>Followers</p>
+                                <p className={content}>{user.followers}</p>
+                            </div>
+                            <div>
+                                <p className={head}>Following</p>
+                                <p className={content}>{user.following}</p>
+                            </div>
+                            <a href="">
+                                <Download/>
+                            </a>
                         </div>
-                        <div>
-                            <p className={head}>Followers</p>
-                            <p className={content}>{user.followers}</p>
+                        <div className="flex gap-2.5">
+                            <div>
+                                <p className={head}>Insult per tweet</p>
+                                <p className="text-lg font-semibold">{rate}%</p>
+                            </div>
+
+                            <div>
+                                <p className={head}>Total Tweets</p>
+                                <p className={content}>{user.totalTweets}</p>
+                            </div>
+                            <div>
+                                <p className={head}>Total Insults</p>
+                                <p className={content}>{user.totalInsults}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className={head}>Followed</p>
-                            <p className={content}>{user.followed}</p>
-                        </div>
-                        <a href="">
-                            <Download />
-                        </a>
                     </div>
                     <button className="btn btn-sm mt-5" onClick={closeModal}>Close</button>
                 </div>

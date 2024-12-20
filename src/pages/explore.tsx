@@ -51,7 +51,11 @@ function Explore(){
                 setLoading(false);
             }
         };
-        findAllDetails(textInput);
+        setTimeout(()=>{
+                findAllDetails(textInput)
+            },
+            1000)
+
     }, [textInput]);
 
     if (error) return <p>Error: {error}</p>;
@@ -95,16 +99,9 @@ function Explore(){
             </div>
             <div className="flex flex-row my-5 gap-2.5">
                 <div className="overflow-x-auto flex-1 border border-base-100 rounded-lg">
-                    {(loading)? <div className="flex-1 min-h-96 flex justify-center items-center"> <Loader></Loader> </div> :
+                    {(loading || response?.results.length===0)? <div className="flex-1 min-h-96 flex justify-center items-center"> <Loader></Loader> </div> :
                         <UserTableDetail users={response?.results}/>
                     }
-                    <div className="join">
-                        {response?.pages?.map((index)=> <button
-                                        key={index}
-                                        className={index+1===response?.currentPage ?"join-item btn btn-active": "join-item btn"}>
-                                {index}</button>
-                            )}
-                    </div>
                 </div>
                 <div
                     className="overflow-x-auto flex flex-col flex-3 min-h-52 min-w-80 border border-base-100 rounded-lg p-2">

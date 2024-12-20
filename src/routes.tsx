@@ -4,6 +4,7 @@ import {RouteObject} from "react-router-dom";
 import Landing from "./pages/landing.tsx";
 import Signup from "./pages/signup.tsx";
 import NotFound from "./pages/not-found.tsx";
+import ChangeLog from "./pages/changelog.tsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const ExploreLayout = lazy(() => import("./layouts/explore-layout"));
@@ -16,6 +17,7 @@ const DetailProfile = lazy(() => import("./pages/detail-profile"));
 export const routes: RouteObject[] = [
     { path: "/", element: <Landing /> },
     { path: "/signup", element: <Signup /> },
+    { path: "/changelog", element: <ChangeLog /> },
     { path: "/explore", element: <Explore /> },
     { path: "/explore/details/:id", element: <DetailProfile /> },
     { path: "*", element: <NotFound /> },
