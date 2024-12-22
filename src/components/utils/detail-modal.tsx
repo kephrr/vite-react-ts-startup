@@ -10,7 +10,6 @@ const DetailModal: React.FC<UserModal> = (user) => {
 
     const openModal = () => {
         modalRef.current?.showModal();
-
     };
 
     const closeModal = () => {

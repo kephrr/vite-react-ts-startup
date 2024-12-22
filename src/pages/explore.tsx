@@ -56,7 +56,7 @@ function Explore(){
             },
             1000)
 
-    }, [textInput]);
+    });
 
     if (error) return <p>Error: {error}</p>;
 
