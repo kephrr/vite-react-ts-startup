@@ -34,7 +34,7 @@ function Explore(){
         {id: 12, text:'Frequently', value:1, select:3}
     ]
     const [textInput, setTextInput] = useState("")
-    const [currentPage, setCurrentPage] = useState<number | undefined>(0)
+    // const [currentPage, setCurrentPage] = useState<number | undefined>(0)
     const [response, setResponse] = useState<RestResponse<UserDetails[]>>();
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -42,21 +42,17 @@ function Explore(){
     useEffect(() => {
         const findAllDetails = async (textInput:string) => {
             try {
-                const data = await toxicityService.findAllDetailsPageWithFilter(textInput, currentPage);
+                const data = await toxicityService.findAllDetailsWithFilter(textInput);
                 setResponse(data)
-                setCurrentPage(data.currentPage)
+                // setCurrentPage(data.currentPage)
             } catch (err) {
                 setError((err as Error).message);
             } finally {
                 setLoading(false);
             }
         };
-        setTimeout(()=>{
-                findAllDetails(textInput)
-            },
-            1000)
-
-    });
+        findAllDetails(textInput)
+    },[textInput]);
 
     if (error) return <p>Error: {error}</p>;
 

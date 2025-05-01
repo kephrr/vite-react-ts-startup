@@ -26,5 +26,13 @@ export class ToxicityServiceImpl implements ToxicityService {
         }
         return await response.json();
     }
+
+    async findAllDetailsWithFilter(keyword?: string): Promise<RestResponse<UserDetails[]>> {
+        const response = await fetch(`${this.baseUrl}/profiles-details?size=10&keyword=${keyword}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch users details");
+        }
+        return await response.json();
+    }
 }
 
